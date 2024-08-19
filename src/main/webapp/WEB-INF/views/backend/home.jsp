@@ -79,7 +79,7 @@
 					<li><a class="profile-pic" href="#"> <img
 							src="${resource}/backend/plugins/images/users/varun.jpg"
 							alt="user-img" width="36" class="img-circle" /><b
-							class="hidden-xs">Admin</b>
+							class="hidden-xs">${loginedUser.name}</b>
 					</a></li>
 				</ul>
 			</div>
@@ -95,7 +95,7 @@
 						href="${resource }/admin/home/view" class="waves-effect"><i
 							class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span
 							class="hide-menu">Dashboard</span></a></li>
-					<li><a href="#" class="waves-effect"><i
+					<li><a href="${resource }/admin/home/profile" class="waves-effect"><i
 							class="fa fa-user fa-fw" aria-hidden="true"></i><span
 							class="hide-menu">Profile</span></a></li>
 					<li><a href="${resource }/admin/category/list"

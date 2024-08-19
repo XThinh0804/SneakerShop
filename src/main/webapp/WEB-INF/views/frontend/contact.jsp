@@ -96,7 +96,7 @@
                 </a>
                 <a href="${resource}/cart-view" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge" id="totalCartProducts">${totalCartProducts}</span>
                 </a>
             </div>
         </div>

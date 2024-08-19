@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import vn.devpro.javaweb29cuoikhoa.model.ProductImage;
 import vn.devpro.javaweb29cuoikhoa.controller.BaseController;
+import vn.devpro.javaweb29cuoikhoa.dto.Jw29Contant;
 import vn.devpro.javaweb29cuoikhoa.dto.SearchModel;
 import vn.devpro.javaweb29cuoikhoa.model.Attribute;
 import vn.devpro.javaweb29cuoikhoa.model.Category;
@@ -28,7 +28,7 @@ import vn.devpro.javaweb29cuoikhoa.service.ContactService;
 import vn.devpro.javaweb29cuoikhoa.service.ProductImageService;
 import vn.devpro.javaweb29cuoikhoa.service.ProductService;
 @Controller
-public class HomeController extends BaseController {
+public class HomeController extends BaseController implements Jw29Contant{
 	@Autowired
 	private ProductService productService;
 	@Autowired
@@ -69,11 +69,10 @@ public class HomeController extends BaseController {
 		model.addAttribute("categories", categories);
 		SearchModel productSearch = new SearchModel();
 //		Thông tin tìm kiếm theo price
-//		productSearch.setPrice(0);//Ban đầu luôn là all
-//		String price = request.getParameter("checkPrice");
-//		if(!StringUtils.isEmpty(price)) {
-//			productSearch.setStatus(Integer.parseInt(price));
-//			System.out.println(productSearch.getPrice());
+//		productSearch.setSearchPrice(0);
+//		String searchPrice = request.getParameter("searchPrice");
+//		if(!StringUtils.isEmpty(searchPrice)) {
+//			productSearch.setSearchPrice(Integer.parseInt(searchPrice));
 //		}
 //		//Thông tin tìm kiếm theo keyword
 		productSearch.setKeyword(null);
@@ -90,16 +89,16 @@ public class HomeController extends BaseController {
 			productSearch.setCurrentPage(Integer.parseInt(request.getParameter("currentPage")));
 		}
 		//Số bản ghi trên một trang
-		productSearch.setSizeOfPage(9);
+		productSearch.setSizeOfPage(SIZE_OF_SHOP);
 		//Tổng số trang
-		int totalPages = allProducts.size() / 9;
-		if(allProducts.size() % 9 != 0 ) {
+		int totalPages = allProducts.size() / SIZE_OF_SHOP;
+		if(allProducts.size() % SIZE_OF_SHOP != 0 ) {
 			totalPages++;
 		}
 		productSearch.setTotalPages(totalPages);
 		//Lấy danh sách trang hiện tại để hiển thị
-		int firstIndex = (productSearch.getCurrentPage() - 1)*9;
-		int lastIndex = firstIndex + 9;
+		int firstIndex = (productSearch.getCurrentPage() - 1)*SIZE_OF_SHOP;
+		int lastIndex = firstIndex + SIZE_OF_SHOP;
 		if(lastIndex > allProducts.size()) {
 			lastIndex = allProducts.size();
 		}

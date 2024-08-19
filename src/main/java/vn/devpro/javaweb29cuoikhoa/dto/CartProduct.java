@@ -6,6 +6,7 @@ import java.math.BigInteger;
 public class CartProduct {
 	private int id;
 	private String name;
+	private int size;
 	private BigInteger quantity;
 	private BigDecimal price;
 	private String avatar;
@@ -20,10 +21,13 @@ public class CartProduct {
 	public CartProduct() {
 		super();
 	}
-	public CartProduct(int id, String name, BigInteger quantity, BigDecimal price, String avatar) {
+	
+	
+	public CartProduct(int id, String name, int size, BigInteger quantity, BigDecimal price, String avatar) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.size = size;
 		this.quantity = quantity;
 		this.price = price;
 		this.avatar = avatar;
@@ -58,5 +62,10 @@ public class CartProduct {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
 }

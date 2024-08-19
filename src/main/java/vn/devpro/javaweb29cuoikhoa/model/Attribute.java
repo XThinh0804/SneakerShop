@@ -1,12 +1,16 @@
 package vn.devpro.javaweb29cuoikhoa.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +34,16 @@ public class Attribute extends BaseModel{
 			@ManyToOne(fetch = FetchType.EAGER)
 			@JoinColumn(name = "product_id")
 			private Product product;
-			
-			
+			@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "attribute")
+			private Set<SaleOrderProduct> listSaleOrderProduct = new HashSet<SaleOrderProduct>();
+			public void addRelationalSaleOrderProduct(SaleOrderProduct saleOrderProduct) {
+				listSaleOrderProduct.add(saleOrderProduct);
+				saleOrderProduct.setAttribute(this);;
+			}
+			public void removeRelationalSaleOrderProduct(SaleOrderProduct saleOrderProduct) {
+				listSaleOrderProduct.remove(saleOrderProduct);
+				saleOrderProduct.setAttribute(null);
+			}
 			public Attribute() {
 				super();
 			}

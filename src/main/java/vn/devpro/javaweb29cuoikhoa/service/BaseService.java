@@ -69,4 +69,18 @@ public abstract class BaseService<Model extends BaseModel> {
 			return null;
 		}
 	}
+	@SuppressWarnings("unchecked")
+	public Model getEntityByNativeSQL(String sql) {
+		try {
+			Query query = entityManager.createNativeQuery(sql, clazz());
+			List<Model> list = query.getResultList();
+			if(list != null && list.size() > 0) {
+				return list.get(0);
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

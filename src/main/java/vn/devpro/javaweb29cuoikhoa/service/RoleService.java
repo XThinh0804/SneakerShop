@@ -25,4 +25,14 @@ public class RoleService extends BaseService<Role> {
 	public void deleteRole(int id) {
 		super.deleteById(id);
 	}
+	public Role getRoleByName(String name) {
+		String sql = "SELECT * FROM tbl_role r Where r.name = '"+name+"'";
+		List<Role> roles = super.executeNativeSql(sql);
+		if(roles != null && roles.size() > 0 ) {
+			return roles.get(0);
+		}
+		else {
+			return new Role();
+		}
+	}
 }

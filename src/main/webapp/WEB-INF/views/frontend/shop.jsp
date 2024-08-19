@@ -176,43 +176,31 @@
 				<div class="border-bottom mb-4 pb-4">
 					<h5 class="font-weight-semi-bold mb-4">Tìm kiếm theo giá</h5>
 					<form>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input" checked
-								id="price-all" name="checkPrice" value="0"> <label
-								class="custom-control-label" for="price-all">All</label>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input" id="price-1"
-								name="checkPrice" value="1"> <label
-								class="custom-control-label" for="price-1">$0 - $50</label>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input" id="price-2"
-								name="checkPrice" value="2"> <label
-								class="custom-control-label" for="price-2">50$ - $100</label>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input" id="price-3"
-								name="checkPrice" value="3"> <label
-								class="custom-control-label" for="price-3">$100 - $200đ</label>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="radio" class="custom-control-input" id="price-4"
-								name="checkPrice" value="4"> <label
-								class="custom-control-label" for="price-4">$200 - $300</label>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-							<input type="radio" class="custom-control-input" id="price-5"
-								name="checkPrice" value="5"> <label
-								class="custom-control-label" for="price-5">Trên $300</label>
-						</div>
-					</form>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="0">
+                            <label class="custom-control-label">All Price</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="1">
+                            <label class="custom-control-label">$0 - $100</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="2">
+                            <label class="custom-control-label">$100 - $200</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="3">
+                            <label class="custom-control-label">$200 - $300</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="4">
+                            <label class="custom-control-label">$300 - $400</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                            <input type="radio" class="custom-control-input" id="searchPrice" name="searchPrice" value="5">
+                            <label class="custom-control-label">$400 - $500</label>
+                        </div>
+                    </form>	
 				</div>
 				<!-- Price End -->
 			</div>
@@ -229,7 +217,7 @@
 							<form action="">
 								<div class="input-group">
 									<input type="text" class="form-control" id="keyword"
-										name="keyword" placeholder="Search by name">
+										name="keyword" placeholder="Search by name" />
 									<div class="input-group-append">
 										<button type="submit" id="btnSearch" name="btnSearch"
 											class="btn btn-primary">Search</button>
@@ -268,18 +256,18 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div class="row" style="margin: auto;">
+				</div>
+			</div>
+			<!-- Shop Product End -->
+			<div class="row" style="margin-left: 700px;">
 
 						<%-- Phan trang --%>
 						<div class="col-md-6">
-							<div class="pagination float-right">
+							<div class="pagination float-right" style="width: 200px;">
 								<div id="paging"></div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!-- Shop Product End -->
 		</div>
 	</div>
 	<!-- Shop End -->
@@ -406,6 +394,7 @@
 	<script src="${resource}/backend/js/jquery.simplePagination.js"></script>
 	<script type="text/javascript">
 		$( document ).ready(function() {
+			//$("#searchPrice").val(${productSearch.searchPrice});
 			$("#keyword").val('${productSearch.keyword}');
 			$("#paging").pagination({
 				currentPage: ${productSearch.currentPage}, //Trang hien tai

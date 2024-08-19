@@ -134,8 +134,8 @@
                             <a href="${resource}/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Đăng nhập</a>
-                            <a href="" class="nav-item nav-link">Đăng ký</a>
+                            <a href="${resource}/login" class="nav-item nav-link">Đăng nhập</a>
+                            <a href="${resource}/signup" class="nav-item nav-link">Đăng ký</a>
                         </div>
                     </div>
                 </nav>

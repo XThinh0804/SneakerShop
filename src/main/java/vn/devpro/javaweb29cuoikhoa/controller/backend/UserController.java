@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import vn.devpro.javaweb29cuoikhoa.controller.BaseController;
 import vn.devpro.javaweb29cuoikhoa.dto.Jw29Contant;
 import vn.devpro.javaweb29cuoikhoa.dto.SearchModel;
-import vn.devpro.javaweb29cuoikhoa.model.Category;
 import vn.devpro.javaweb29cuoikhoa.model.Role;
 import vn.devpro.javaweb29cuoikhoa.model.User;
 import vn.devpro.javaweb29cuoikhoa.service.RoleService;
@@ -78,8 +78,11 @@ public class UserController extends BaseController implements Jw29Contant{
 	}
 	
 	@RequestMapping(value = "add-save", method =RequestMethod.POST)
-	public String saveAddUser(final Model model,
+	public String saveAddUser(final Model model,final HttpServletRequest request,
 			@ModelAttribute("user") User user) {
+		Role role =roleService.getById(Integer.parseInt(request.getParameter("roleId")));
+		user.addRelationalUserRole(role);
+		user.setPassword(new BCryptPasswordEncoder(4).encode(request.getParameter("password")));
 		userService.saveOrUpdate(user);
 		return "redirect:add";
 	}
@@ -88,6 +91,7 @@ public class UserController extends BaseController implements Jw29Contant{
 	public String editCategories(final Model model,
 			@PathVariable("userId") int userId) {
 		User user = userService.getById(userId);
+		user.setUpdateDate(new Date());
 		List<User> users = userService.findAllActive();
 		model.addAttribute("users",users);
 		model.addAttribute("user",user);

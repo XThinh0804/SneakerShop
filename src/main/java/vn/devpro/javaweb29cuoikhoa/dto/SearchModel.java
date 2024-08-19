@@ -3,30 +3,30 @@ package vn.devpro.javaweb29cuoikhoa.dto;
 public class SearchModel {
 	private int status;
 	private int categoryId;
-	private int price;
 	private String keyword;
-	
+	private int searchPrice;
+
 	private String beginDate;
 	private String endDate;
-	
+
 	private int sizeOfPage;
 	private int currentPage;
 	private int totalItems;
 	private int totalPages;
-	
+
 	public SearchModel() {
 		super();
 	}
 
 	
 
-	public SearchModel(int status, int categoryId, int price, String keyword, String beginDate, String endDate,
+	public SearchModel(int status, int categoryId, String keyword, int searchPrice, String beginDate, String endDate,
 			int sizeOfPage, int currentPage, int totalItems, int totalPages) {
 		super();
 		this.status = status;
 		this.categoryId = categoryId;
-		this.price = price;
 		this.keyword = keyword;
+		this.searchPrice = searchPrice;
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.sizeOfPage = sizeOfPage;
@@ -109,12 +109,12 @@ public class SearchModel {
 		this.totalPages = totalPages;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getSearchPrice() {
+		return searchPrice;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setSearchPrice(int searchPrice) {
+		this.searchPrice = searchPrice;
 	}
-	
+
 }

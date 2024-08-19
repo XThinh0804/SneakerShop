@@ -176,6 +176,7 @@
                             <th scope="col" class="text-center">No.</th>
 							<th scope="col" class="text-center">Image</th>
                             <th scope="col" class="text-center">Product</th>
+                            <th scope="col" class="text-center">Size</th>
                             <th scope="col" class="text-center">Quantity</th>
 							<th scope="col" class="text-center">Price</th>
 							<th scope="col" class="text-center">Total</th>
@@ -188,6 +189,7 @@
                         	<th scope="row">${loop.index + 1 }</th>
                             <td class="align-middle"><img src="${classpath}/UploadFiles/${cartProduct.avatar}" alt="" style="width: 50px;"></td>
                             <td>${cartProduct.name }</td>
+                            <td>${cartProduct.size }</td>
                             <td align="center">
 							<button type="button" onclick="updateProductQuantity(${cartProduct.id }, -1)" value="-">-</button> 
 							<strong><span id="productQuantity_${cartProduct.id }">${cartProduct.quantity }</span></strong>

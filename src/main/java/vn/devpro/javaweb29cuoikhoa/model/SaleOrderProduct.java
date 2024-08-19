@@ -35,6 +35,9 @@ public class SaleOrderProduct extends BaseModel{
 		@ManyToOne(fetch = FetchType.EAGER)
 		@JoinColumn(name = "update_by")
 		private User userUpdateSaleOrderProduct;
+		@ManyToOne(fetch = FetchType.EAGER)
+		@JoinColumn(name = "attribute_id")
+		private Attribute attribute;
 		public SaleOrderProduct() {
 			super();
 		}
@@ -91,6 +94,12 @@ public class SaleOrderProduct extends BaseModel{
 		}
 		public void setUserUpdateSaleOrderProduct(User userUpdateSaleOrderProduct) {
 			this.userUpdateSaleOrderProduct = userUpdateSaleOrderProduct;
+		}
+		public Attribute getAttribute() {
+			return attribute;
+		}
+		public void setAttribute(Attribute attribute) {
+			this.attribute = attribute;
 		}
 		
 }

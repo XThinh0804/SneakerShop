@@ -147,16 +147,20 @@ public class ProductService extends BaseService<Product>
 		public List<Product> searchShopProduct(SearchModel productSearch){
 			String sql = "SELECT * FROM tbl_product p WHERE 1=1";
 			//Tìm theo price
-			if(productSearch.getPrice() == 1) {
-				sql += " AND p.price > 0 AND p.price <= 50";
-			}else if(productSearch.getPrice() == 2){
-				sql += " AND p.price > 50 AND p.price <= 100";
-			}else if(productSearch.getPrice() == 3){
-				sql += " AND p.price > 100 AND p.price <= 200";
-			}else if(productSearch.getPrice() == 4){
-				sql += " AND p.price > 200 AND p.price <= 300";
-			}else if(productSearch.getPrice() == 5){
-				sql += " AND p.price > 300";
+			if(productSearch.getSearchPrice() == 1) {
+				sql += " AND p.price > 0 AND p.price < 100";
+			}
+			if(productSearch.getSearchPrice() == 2) {
+				sql += " AND p.price > 100 AND p.price < 200";
+			}
+			if(productSearch.getSearchPrice() == 3) {
+				sql += " AND p.price > 200 AND p.price < 300";
+			}
+			if(productSearch.getSearchPrice() == 4) {
+				sql += " AND p.price > 300 AND p.price < 400";
+			}
+			if(productSearch.getSearchPrice() == 5) {
+				sql += " AND p.price > 400 AND p.price < 500";
 			}
 			//Tìm theo keyword
 			if(productSearch.getKeyword() != null) {
