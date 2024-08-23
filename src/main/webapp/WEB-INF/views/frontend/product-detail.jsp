@@ -500,12 +500,24 @@
 	<script src="js/main.js"></script>
 	<!-- Add to cart -->
 	<script type="text/javascript">
+	function getSelectedRadioValue() {
+	    const radios = document.querySelectorAll('input[name="size"]');
+	    let selectedValue = '';
+	    radios.forEach((radio) => {
+	        if (radio.checked) {
+	            selectedValue = radio.value;
+	        }
+	    });
+	    return selectedValue;
+	}
+	const selectedValue = getSelectedRadioValue();
 		addToCart = function(_productId, _productName) {		
 			//alert("Thêm "  + _quantity + " sản phẩm '" + _productName + "' vào giỏ hàng ");
 			let data = {
 				id: _productId, //lay theo id
 				name: _productName,
-				quantity: jQuery("#quantity").val()
+				quantity: jQuery("#quantity").val(),
+				size: selectedValue
 			};
 				
 			//$ === jQuery
